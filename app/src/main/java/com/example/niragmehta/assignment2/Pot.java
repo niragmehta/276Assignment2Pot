@@ -5,7 +5,7 @@ package com.example.niragmehta.assignment2;
  */
 
 public class Pot {
-//
+
     private int weight;
     private String name;
     private int weightWithFood;
