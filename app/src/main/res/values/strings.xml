@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Assignment2</string>
+    <string name="app_name">Serving Size Calulator</string>
     <string name="select_a_pot_to_use">Select a pot to use:</string>
     <string name="pot_name">Pot Name:</string>
     <string name="pot_weight">Pot Weight (g)</string>
