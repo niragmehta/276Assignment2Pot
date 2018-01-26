@@ -7,4 +7,11 @@
     <string name="pot_weight_hint">Pot Weight (g)</string>
     <string name="ok">OK</string>
     <string name="add_pot">Add Pot</string>
+    <string name="back">Back</string>
+    <string name="serving_weight">Serving Weight</string>
+    <string name="servings"># Servings</string>
+    <string name="weight_of_food_g">Weight of Food (g)</string>
+    <string name="weight_with_food_g">Weight with Food (g)</string>
+    <string name="weight_empty_g">Weight Empty (g)</string>
+    <string name="pot">Pot</string>
 </resources>

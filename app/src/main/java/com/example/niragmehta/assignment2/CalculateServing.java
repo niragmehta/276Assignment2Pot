@@ -11,4 +11,3 @@ public class CalculateServing extends AppCompatActivity {
         setContentView(R.layout.activity_calculate_serving);
     }
 }
-//
