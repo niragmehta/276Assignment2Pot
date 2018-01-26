@@ -28,7 +28,7 @@ public class PotList extends AppCompatActivity {
                 potCollection.getPots()
         );
 
-        ListView listView=findViewById(R.id.listViewListPots);
+        ListView listView=findViewById(R.id.listViewListPots);  //yup
         listView.setAdapter(adapter);
 
         Button button=findViewById(R.id.btnAddPot);
