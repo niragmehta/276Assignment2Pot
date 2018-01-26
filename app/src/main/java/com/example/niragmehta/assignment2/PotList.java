@@ -1,8 +1,11 @@
 package com.example.niragmehta.assignment2;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class PotList extends AppCompatActivity {
@@ -22,6 +25,16 @@ public class PotList extends AppCompatActivity {
 
         ListView listView=findViewById(R.id.listViewListPots);
         listView.setAdapter(adapter);
+
+        Button button=findViewById(R.id.btnAddPot);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PotList.this,AddPot.class));
+            }
+        });
+
 
     }
 
