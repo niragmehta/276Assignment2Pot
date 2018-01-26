@@ -17,6 +17,7 @@ public class Pot {
         this.weight=weightInG;
     }
 
+
     public int getWeightWithFood() {
         return weightWithFood;
     }

@@ -8,6 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PotList extends AppCompatActivity {
 
     @Override
@@ -16,6 +19,8 @@ public class PotList extends AppCompatActivity {
         setContentView(R.layout.activity_pot_list);
 
         PotCollection potCollection=new PotCollection();
+
+
 
         ArrayAdapter<Pot> adapter=new ArrayAdapter<Pot>(
                 this,
