@@ -13,6 +13,7 @@ public class PotList extends AppCompatActivity {
 
     public PotCollection potCollection = new PotCollection();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,15 +22,15 @@ public class PotList extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.listViewListPots);
 
         switchActivityonClick();
-        populateListView();
+        populateListView(listView);
         //registerOnClickCallback();
 
     }
 
+    //switch to add pot
     public void switchActivityonClick()
     {
         Button button=findViewById(R.id.btnAddPot);
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,7 +42,7 @@ public class PotList extends AppCompatActivity {
 
 
 
-    private void populateListView() {
+    private void populateListView(ListView listView) {
 
         // Instantiate a data collection object
         // ===============  to delete later
@@ -58,7 +59,7 @@ public class PotList extends AppCompatActivity {
                 potCollection.getPotDescriptions());
 
         // Configure list view
-        ListView listView = (ListView) findViewById(R.id.listViewListPots);
+        listView = (ListView) findViewById(R.id.listViewListPots);
         listView.setAdapter(adapter);
     }
 
