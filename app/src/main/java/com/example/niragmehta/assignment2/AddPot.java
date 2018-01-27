@@ -38,13 +38,20 @@ public class AddPot extends AppCompatActivity {
                 int potWeight;
                 String potName;
                 potName = txtpotName.getText().toString();
+                if(potName.equals(""))
+                {
+                    Toast.makeText(getApplicationContext(),
+                            "The name entered is empty",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 try {
                     Integer.parseInt(txtpotWeight.getText().toString());
                 }
                 catch (Exception e)
                 {
                     Toast.makeText(getApplicationContext(),
-                            "The text you have entered in not a number",
+                            "The text you have entered in weight field is not a number",
                             Toast.LENGTH_LONG).show();
                     return;
                 }

@@ -30,6 +30,7 @@ public class CalculateServing extends AppCompatActivity {
         TextView servingWeightLabel=findViewById(R.id.txtViewServingWt);
 
 
+
     }
 
     public void goBack()
