@@ -33,7 +33,8 @@ public class PotList extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PotList.this,AddPot.class));
+                Intent intent = AddPot.makeIntent(PotList.this);
+                startActivity (intent);
             }
         });
 
