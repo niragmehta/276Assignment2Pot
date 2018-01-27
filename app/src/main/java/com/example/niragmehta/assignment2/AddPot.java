@@ -1,5 +1,6 @@
 package com.example.niragmehta.assignment2;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -36,6 +37,15 @@ public class AddPot extends AppCompatActivity {
                 String potName;
                 int potWeight;
                 potName=txtpotName.getText().toString();
+                try {
+                    potWeight=Integer.parseInt(txtpotWeight.getText().toString());
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(), "The text you have entered in not a number",
+                            Toast.LENGTH_LONG).show();
+                    return;
+                }
                 potWeight=Integer.parseInt(txtpotWeight.getText().toString());
 
                 if(potWeight<0)
@@ -44,8 +54,6 @@ public class AddPot extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();
                     return;
                 }
-
-
 
 
             }
