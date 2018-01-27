@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class CalculateServing extends AppCompatActivity {
 
@@ -13,7 +15,18 @@ public class CalculateServing extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculate_serving);
 
+        EditText wtWithFood=findViewById(R.id.PTWtWithFood);
+        EditText numServings=findViewById(R.id.PTnumServings);
+
         goBack();
+
+    }
+
+    public void validateAndUpdateLabels()
+    {
+        TextView wtOfFood=findViewById(R.id.txtViewfoodWeight);
+        TextView servingWeight=findViewById(R.id.txtViewServingWt);
+
 
 
     }
@@ -28,5 +41,7 @@ public class CalculateServing extends AppCompatActivity {
             }
         });
     }
+
+
 
 }
