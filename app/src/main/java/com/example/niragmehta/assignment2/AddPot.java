@@ -1,8 +1,11 @@
 package com.example.niragmehta.assignment2;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,14 +13,10 @@ import android.widget.Toast;
 
 public class AddPot extends AppCompatActivity {
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pot);
-
 
         EditText txtpotName=findViewById(R.id.editTextPotName);
         EditText txtpotWeight=findViewById(R.id.editTextPotWeight);
@@ -26,7 +25,6 @@ public class AddPot extends AppCompatActivity {
         OkAndValidate(txtpotName,txtpotWeight);
 
     }
-
 
     public void OkAndValidate(final EditText txtpotName, final EditText txtpotWeight)
     {
@@ -62,9 +60,6 @@ public class AddPot extends AppCompatActivity {
         });
     }
 
-
-
-
     public void cancel()
     {
         Button buttonCancel=findViewById(R.id.btnCancel);
@@ -76,6 +71,7 @@ public class AddPot extends AppCompatActivity {
         });
     }
 
-
-
+    public static Intent makeIntent(Context context) {
+        return new Intent(context, AddPot.class);
+    }
 }
