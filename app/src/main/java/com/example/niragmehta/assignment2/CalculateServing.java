@@ -13,8 +13,13 @@ public class CalculateServing extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculate_serving);
 
+        goBack();
 
 
+    }
+
+    public void goBack()
+    {
         Button button=findViewById(R.id.btnBack);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
