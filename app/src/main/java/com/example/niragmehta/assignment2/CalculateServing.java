@@ -1,5 +1,6 @@
 package com.example.niragmehta.assignment2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -76,6 +77,11 @@ public class CalculateServing extends AppCompatActivity {
         });
     }
 
-
+    public static Intent makeIntent(Context context, String potName, int potWeight) {
+        Intent intent = new Intent(context, CalculateServing.class);
+        intent.putExtra("potName",potName);
+        intent.putExtra("potWeight", potWeight);
+        return intent;
+    }
 
 }

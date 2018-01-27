@@ -6,14 +6,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class PotList extends AppCompatActivity {
 
     public static final int REQUEST_CODE_GET_POT = 2407;
+    public static final int REQUEST_CODE_CALCULATE = 1321;
     public PotCollection potCollection = new PotCollection();
 
 
@@ -24,7 +27,7 @@ public class PotList extends AppCompatActivity {
 
         switchToAddPotActivityonClick();
         populateListView();
-        //registerOnClickCallback();
+        registerOnClickCallback();
     }
 
     //switch to add pot
@@ -80,11 +83,20 @@ public class PotList extends AppCompatActivity {
     //switch to calculate serving size activity
 
     private void registerOnClickCallback() {
+        ListView list = (ListView) findViewById(R.id.listViewListPots);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
+                TextView textView = (TextView) viewClicked;
+                String message = "Using #" + position + " " + textView.getText().toString();
+                Toast.makeText(PotList.this, message, Toast.LENGTH_LONG).show();
 
+                Intent intent = CalculateServing.makeIntent(PotList.this,
+                        potCollection.getPot(position).getName(),
+                        potCollection.getPot(position).getWeightInG());
 
+                startActivityForResult(intent, REQUEST_CODE_CALCULATE);
+            }
+        });
     }
-
-
-
-
 }
