@@ -12,6 +12,11 @@ import android.widget.Toast;
 
 public class CalculateServing extends AppCompatActivity {
 
+    private static final String EXTRA_POT_NAME = "The pot's name";
+    private static final String EXTRA_POT_WEIGHT = "The pot's weight";
+    private String potName;
+    private int emptyPotWeight;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,9 +24,16 @@ public class CalculateServing extends AppCompatActivity {
 
         validateAndUpdateLabels();
 
+        extractDataFromIntent();
 
         goBack();
 
+    }
+
+    private void extractDataFromIntent() {
+        Intent intent = getIntent();
+        potName = intent.getStringExtra(EXTRA_POT_NAME);
+        emptyPotWeight = intent.getIntExtra(EXTRA_POT_WEIGHT, 0);
     }
 
     public void validateAndUpdateLabels()
@@ -79,8 +91,8 @@ public class CalculateServing extends AppCompatActivity {
 
     public static Intent makeIntent(Context context, String potName, int potWeight) {
         Intent intent = new Intent(context, CalculateServing.class);
-        intent.putExtra("potName",potName);
-        intent.putExtra("potWeight", potWeight);
+        intent.putExtra(EXTRA_POT_NAME,potName);
+        intent.putExtra(EXTRA_POT_WEIGHT, potWeight);
         return intent;
     }
 
