@@ -22,10 +22,8 @@ public class PotList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pot_list);
 
-        ListView listView = (ListView) findViewById(R.id.listViewListPots);
-
         switchToAddPotActivityonClick();
-        populateListView(listView);
+        populateListView();
         //registerOnClickCallback();
     }
 
@@ -52,27 +50,22 @@ public class PotList extends AppCompatActivity {
 
                     Pot pot = new Pot(potName, potWeight);
                     potCollection.addPot(pot);
+                    populateListView();
 
                     Toast.makeText(getApplicationContext(),
-                            "My favorite pot is " + pot.getName(),
+                             pot.getName() + " successfully added!",
                             Toast.LENGTH_LONG).show();
-                    Log.i("PotApp", "Return successful.");
                 } else {
-                    Log.i("PotApp", "Add pot activity canceled.");
+                    Toast.makeText(getApplicationContext(),
+                            "Add pot activity canceled",
+                            Toast.LENGTH_LONG).show();
                 }
         }
     }
 
 
-    private void populateListView(ListView listView) {
-
-        // Instantiate a data collection object
-        // ===============  to delete later
-        potCollection.addPot(new Pot("Super bowl", 999));
-        potCollection.addPot(new Pot("My mini bowl", 1));
-
-        //================
-
+    private void populateListView() {
+        ListView listView = (ListView) findViewById(R.id.listViewListPots);
 
         // Build adaptor
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
