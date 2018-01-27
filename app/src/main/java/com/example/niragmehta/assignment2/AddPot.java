@@ -1,5 +1,6 @@
 package com.example.niragmehta.assignment2;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Intent;
@@ -24,38 +25,47 @@ public class AddPot extends AppCompatActivity {
         cancel();
         OkAndValidate(txtpotName,txtpotWeight);
 
+
+
     }
 
     public void OkAndValidate(final EditText txtpotName, final EditText txtpotWeight)
     {
-        Button buttonOK=findViewById(R.id.btnOk);
+        Button buttonOK = findViewById(R.id.btnOk);
         buttonOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String potName;
                 int potWeight;
-                potName=txtpotName.getText().toString();
+                String potName;
+                potName = txtpotName.getText().toString();
                 try {
                     Integer.parseInt(txtpotWeight.getText().toString());
                 }
                 catch (Exception e)
                 {
-                    Toast.makeText(getApplicationContext(), "The text you have entered in not a number",
+                    Toast.makeText(getApplicationContext(),
+                            "The text you have entered in not a number",
                             Toast.LENGTH_LONG).show();
                     return;
                 }
-                potWeight=Integer.parseInt(txtpotWeight.getText().toString());
+                potWeight = Integer.parseInt(txtpotWeight.getText().toString());
 
                 if(potWeight<0)
                 {
-                    Toast.makeText(getApplicationContext(), "The number you have entered is less than 0\nadd a whole number",
+                    Toast.makeText(getApplicationContext(),
+                            "The number you have entered is less than 0\n" +
+                                    "add a whole number",
                             Toast.LENGTH_LONG).show();
                     return;
                 }
 
                 //Add Inten to transfer potName and potWeight data over to PotList
+                Intent intent = new Intent();
 
-
+                intent.putExtra("The pot name", potName);
+                intent.putExtra("The pot weight", potWeight);
+                setResult(Activity.RESULT_OK, intent);
+                finish();
             }
         });
     }
