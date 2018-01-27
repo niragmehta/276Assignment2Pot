@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +29,15 @@ public class CalculateServing extends AppCompatActivity {
 
         goBack();
 
+        Log.i("Debug", "pot name is = " + potName + "\n"
+                + "pot weight is = " + emptyPotWeight + ".");
+    }
+
+    public static Intent makeIntent(Context context, String potName, int potWeight) {
+        Intent intent = new Intent(context, CalculateServing.class);
+        intent.putExtra(EXTRA_POT_NAME,potName);
+        intent.putExtra(EXTRA_POT_WEIGHT, potWeight);
+        return intent;
     }
 
     private void extractDataFromIntent() {
@@ -72,10 +82,6 @@ public class CalculateServing extends AppCompatActivity {
 
         int wtOfFoodResult=wtWithFoodnum-wtEmptynum;
         int servingWtNum=wtOfFoodResult/numServingsnum;
-
-
-
-
     }
 
     public void goBack()
@@ -87,13 +93,6 @@ public class CalculateServing extends AppCompatActivity {
                 finish();
             }
         });
-    }
-
-    public static Intent makeIntent(Context context, String potName, int potWeight) {
-        Intent intent = new Intent(context, CalculateServing.class);
-        intent.putExtra(EXTRA_POT_NAME,potName);
-        intent.putExtra(EXTRA_POT_WEIGHT, potWeight);
-        return intent;
     }
 
 }
