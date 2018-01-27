@@ -61,7 +61,6 @@ public class PotList extends AppCompatActivity {
                 potCollection.getPotDescriptions());
 
         // Configure list view
-        listView = (ListView) findViewById(R.id.listViewListPots);
         listView.setAdapter(adapter);
     }
 

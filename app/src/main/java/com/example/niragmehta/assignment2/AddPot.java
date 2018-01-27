@@ -57,6 +57,7 @@ public class AddPot extends AppCompatActivity {
 
                 //Add Inten to transfer potName and potWeight data over to PotList
 
+
             }
         });
     }
