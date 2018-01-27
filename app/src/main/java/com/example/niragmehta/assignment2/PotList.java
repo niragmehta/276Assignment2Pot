@@ -70,6 +70,7 @@ public class PotList extends AppCompatActivity {
     private void populateListView() {
         ListView listView = (ListView) findViewById(R.id.listViewListPots);
 
+
         // Build adaptor
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this,
