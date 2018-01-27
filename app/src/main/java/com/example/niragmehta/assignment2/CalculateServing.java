@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CalculateServing extends AppCompatActivity {
 
@@ -15,8 +16,7 @@ public class CalculateServing extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculate_serving);
 
-        EditText wtWithFood=findViewById(R.id.PTWtWithFood);
-        EditText numServings=findViewById(R.id.PTnumServings);
+        validateAndUpdateLabels();
 
 
         goBack();
@@ -25,9 +25,41 @@ public class CalculateServing extends AppCompatActivity {
 
     public void validateAndUpdateLabels()
     {
+
+        EditText wtWithFood=findViewById(R.id.PTWtWithFood);
+        EditText numServings=findViewById(R.id.PTnumServings);
         TextView wtOfFood=findViewById(R.id.txtViewfoodWeight);
         TextView servingWeight=findViewById(R.id.txtViewfoodWeight);
         TextView servingWeightLabel=findViewById(R.id.txtViewServingWt);
+
+        int wtWithFoodnum;
+        int numServingsnum;
+
+        int wtEmptynum=0;
+
+        try {
+            wtWithFoodnum=Integer.parseInt(wtWithFood.getText().toString());
+            numServingsnum=Integer.parseInt(numServings.getText().toString());
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(getApplicationContext(),
+                    "You did not enter an integer into the text field(s)",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if(wtWithFoodnum<0 || numServingsnum<0)
+        {
+            Toast.makeText(getApplicationContext(),
+                    "Please enter a whole number into the text field(s)",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        int wtOfFoodResult=wtWithFoodnum-wtEmptynum;
+        int servingWtNum=wtOfFoodResult/numServingsnum;
+
 
 
 
