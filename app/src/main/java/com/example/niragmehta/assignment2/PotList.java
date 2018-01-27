@@ -15,11 +15,22 @@ import java.util.List;
 
 public class PotList extends AppCompatActivity {
 
+    public PotCollection potCollection = new PotCollection();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pot_list);
 
+        switchActivityonClick();
+
+        pupulateListView();
+        registerOnClickCallback();
+
+    }
+
+    public void switchActivityonClick()
+    {
         Button button=findViewById(R.id.btnAddPot);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -29,17 +40,12 @@ public class PotList extends AppCompatActivity {
             }
         });
 
-        pupulateListView();
-        registerOnClickCallback();
     }
 
     private void pupulateListView() {
-        // Create a list of item
+
         // Instantiate a data collection object
-        PotCollection potCollection = new PotCollection();
-
-
-        // ===============
+        // ===============  to delete later
         potCollection.addPot(new Pot("Super bowl", 999));
         potCollection.addPot(new Pot("My mini bowl", 1));
 
