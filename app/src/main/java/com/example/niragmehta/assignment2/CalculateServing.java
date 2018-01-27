@@ -18,6 +18,7 @@ public class CalculateServing extends AppCompatActivity {
         EditText wtWithFood=findViewById(R.id.PTWtWithFood);
         EditText numServings=findViewById(R.id.PTnumServings);
 
+
         goBack();
 
     }
@@ -25,8 +26,8 @@ public class CalculateServing extends AppCompatActivity {
     public void validateAndUpdateLabels()
     {
         TextView wtOfFood=findViewById(R.id.txtViewfoodWeight);
-        TextView servingWeight=findViewById(R.id.txtViewServingWt);
-
+        TextView servingWeight=findViewById(R.id.txtViewfoodWeight);
+        TextView servingWeightLabel=findViewById(R.id.txtViewServingWt);
 
 
     }
