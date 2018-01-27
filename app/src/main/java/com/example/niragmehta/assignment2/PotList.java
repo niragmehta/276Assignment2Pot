@@ -1,15 +1,19 @@
 package com.example.niragmehta.assignment2;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class PotList extends AppCompatActivity {
 
+    public static final int REQUEST_CODE_GET_POT = 2407;
     public PotCollection potCollection = new PotCollection();
 
 
@@ -23,7 +27,6 @@ public class PotList extends AppCompatActivity {
         switchToAddPotActivityonClick();
         populateListView(listView);
         //registerOnClickCallback();
-
     }
 
     //switch to add pot
@@ -34,12 +37,31 @@ public class PotList extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = AddPot.makeIntent(PotList.this);
-                startActivity (intent);
+                startActivityForResult(intent, REQUEST_CODE_GET_POT);
             }
         });
-
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(requestCode) {
+            case REQUEST_CODE_GET_POT:
+                if(resultCode == Activity.RESULT_OK){
+                    String potName = data.getStringExtra("The pot name");
+                    int potWeight = data.getIntExtra("The pot weight",0);
+
+                    Pot pot = new Pot(potName, potWeight);
+                    potCollection.addPot(pot);
+
+                    Toast.makeText(getApplicationContext(),
+                            "My favorite pot is " + pot.getName(),
+                            Toast.LENGTH_LONG).show();
+                    Log.i("PotApp", "Return successful.");
+                } else {
+                    Log.i("PotApp", "Add pot activity canceled.");
+                }
+        }
+    }
 
     private void populateListView(ListView listView) {
 
