@@ -38,7 +38,7 @@ public class AddPot extends AppCompatActivity {
                 int potWeight;
                 potName=txtpotName.getText().toString();
                 try {
-                    potWeight=Integer.parseInt(txtpotWeight.getText().toString());
+                    Integer.parseInt(txtpotWeight.getText().toString());
                 }
                 catch (Exception e)
                 {
@@ -55,6 +55,7 @@ public class AddPot extends AppCompatActivity {
                     return;
                 }
 
+                //Add Inten to transfer potName and potWeight data over to PotList
 
             }
         });
