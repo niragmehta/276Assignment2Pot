@@ -23,9 +23,8 @@ public class PotList extends AppCompatActivity {
         setContentView(R.layout.activity_pot_list);
 
         switchActivityonClick();
-
         pupulateListView();
-        registerOnClickCallback();
+        //registerOnClickCallback();
 
     }
 
@@ -41,6 +40,8 @@ public class PotList extends AppCompatActivity {
         });
 
     }
+
+
 
     private void pupulateListView() {
 
@@ -63,6 +64,8 @@ public class PotList extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
+    //switch to calculate serving size activity
+    /*
     private void registerOnClickCallback() {
         final ListView listView = (ListView) findViewById(R.id.listViewListPots);
 
@@ -76,4 +79,8 @@ public class PotList extends AppCompatActivity {
         });
 
     }
+    */
+
+
+
 }
