@@ -25,19 +25,15 @@ public class CalculateServing extends AppCompatActivity implements TextWatcher {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculate_serving);
 
-        TextView txtViewPotName=findViewById(R.id.textViewPotName);
-        TextView txtViewWeightEmpty=findViewById(R.id.textViewWeightEmpty);
-
-        //txtViewPotName.setText(potName);
-        //txtViewWeightEmpty.setText(emptyPotWeight);
-
-
-
-        validateAndUpdateLabels();
+        TextView txtViewPotName = findViewById(R.id.textViewPotName);
+        TextView txtViewWeightEmpty = findViewById(R.id.textViewWeightEmpty);
 
         extractDataFromIntent();
-
+        validateAndUpdateLabels();
         goBack();
+
+        txtViewPotName.setText(potName);
+        txtViewWeightEmpty.setText("" + emptyPotWeight);
 
         Log.i("Debug", "pot name is = " + potName + "\n"
                 + "pot weight is = " + emptyPotWeight + ".");
@@ -80,10 +76,9 @@ public class CalculateServing extends AppCompatActivity implements TextWatcher {
         TextView wtOfFood=findViewById(R.id.txtViewfoodWeight);
         TextView servingWeightLabel=findViewById(R.id.txtViewServingWt);
 
+        int wtEmptynum=emptyPotWeight;
         int wtWithFoodnum;
         int numServingsnum;
-
-        int wtEmptynum=emptyPotWeight;
 
         try {
             wtWithFoodnum=Integer.parseInt(wtWithFood.getText().toString());
