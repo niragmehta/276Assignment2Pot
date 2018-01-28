@@ -1,5 +1,6 @@
 package com.example.niragmehta.assignment2;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ public class CalculateServing extends AppCompatActivity implements TextWatcher {
 
     private static final String EXTRA_POT_NAME = "The pot's name";
     private static final String EXTRA_POT_WEIGHT = "The pot's weight";
+    public static final String THE_POT_INDEX = "The pot's index";
     private String potName;
     private int emptyPotWeight;
     private int wtOfFoodnum;
@@ -36,6 +38,7 @@ public class CalculateServing extends AppCompatActivity implements TextWatcher {
         TextView txtViewWeightEmpty = findViewById(R.id.textViewWeightEmpty);
 
         extractDataFromIntent();
+
         goBack();
 
         txtViewPotName.setText(potName);
@@ -45,11 +48,13 @@ public class CalculateServing extends AppCompatActivity implements TextWatcher {
         numServings=findViewById(R.id.PTnumServings);
         wtOfFood=findViewById(R.id.txtViewfoodWeight);
         servingWeightLabel=findViewById(R.id.txtViewServingWt);
+
         Button deleteButton=findViewById(R.id.btnDeletePot);
 
         wtWithFood.addTextChangedListener(this);
         numServings.addTextChangedListener(this);
 
+        deletePot(deleteButton);
     }
 
     @Override
@@ -117,22 +122,22 @@ public class CalculateServing extends AppCompatActivity implements TextWatcher {
 
     }
 
-    public void deletePot(Button button)
-    {
+    public void deletePot(Button button) {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Use Intent to send back index to delete Pot
-
+                setResult(Activity.RESULT_OK, getIntent());
+                finish();
             }
         });
     }
 
 
-    public static Intent makeIntent(Context context, String potName, int potWeight) {
+    public static Intent makeIntent(Context context, String potName, int potWeight, int position) {
         Intent intent = new Intent(context, CalculateServing.class);
         intent.putExtra(EXTRA_POT_NAME,potName);
         intent.putExtra(EXTRA_POT_WEIGHT, potWeight);
+        intent.putExtra(THE_POT_INDEX, position);
         return intent;
     }
 
@@ -142,8 +147,7 @@ public class CalculateServing extends AppCompatActivity implements TextWatcher {
         emptyPotWeight = intent.getIntExtra(EXTRA_POT_WEIGHT, 0);
     }
 
-    public void goBack()
-    {
+    public void goBack(){
         Button button=findViewById(R.id.btnBack);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

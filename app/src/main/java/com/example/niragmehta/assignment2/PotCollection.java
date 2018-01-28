@@ -6,6 +6,7 @@ import java.util.List;
 /**
  * Class to manage a collection of pots.
  */
+
 public class PotCollection {
     private List<Pot> pots = new ArrayList<>();
 
@@ -49,5 +50,9 @@ public class PotCollection {
             throw new IllegalArgumentException();
         }
 
+    }
+
+    public void removePot(int index){
+        pots.remove(index);
     }
 }

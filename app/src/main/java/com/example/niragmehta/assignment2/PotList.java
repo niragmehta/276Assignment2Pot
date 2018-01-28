@@ -1,9 +1,11 @@
 package com.example.niragmehta.assignment2;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -63,6 +65,21 @@ public class PotList extends AppCompatActivity {
                             "Add pot activity canceled",
                             Toast.LENGTH_LONG).show();
                 }
+                break;
+            case REQUEST_CODE_CALCULATE:
+                int potIndex = data.getIntExtra("The pot's index", -1);
+
+                Log.i("debug", "The pot's index is " + potIndex);
+                if(potIndex == -1){
+                    Toast.makeText(getApplicationContext()," Pot index not found (?)",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    potCollection.removePot(potIndex);
+                    populateListView();
+                }
+
+
+
         }
     }
 
@@ -88,15 +105,18 @@ public class PotList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
                 TextView textView = (TextView) viewClicked;
+
                 String message = "Using #" + position + " " + textView.getText().toString();
                 Toast.makeText(PotList.this, message, Toast.LENGTH_LONG).show();
 
                 Intent intent = CalculateServing.makeIntent(PotList.this,
                         potCollection.getPot(position).getName(),
-                        potCollection.getPot(position).getWeightInG());
+                        potCollection.getPot(position).getWeightInG(),
+                        position);
 
                 startActivityForResult(intent, REQUEST_CODE_CALCULATE);
             }
         });
     }
+
 }

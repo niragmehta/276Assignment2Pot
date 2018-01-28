@@ -9,7 +9,7 @@
     <Button
         android:id="@+id/btnAddPot"
         android:layout_width="120dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
@@ -17,7 +17,7 @@
         android:layout_marginEnd="22dp"
         android:layout_marginRight="22dp"
         android:text="@string/add_pot"
-        android:textSize="20dp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/txtSlectPotToUse"
@@ -28,9 +28,9 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="15dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="20dp"
         android:text="@string/select_a_pot_to_use"
-        android:textSize="18sp" />
+        android:textSize="24sp" />
 
     <ListView
         android:id="@+id/listViewListPots"
@@ -40,6 +40,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/txtSlectPotToUse"
-        android:layout_marginTop="19dp" />
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp" />
 
 </android.widget.RelativeLayout>
