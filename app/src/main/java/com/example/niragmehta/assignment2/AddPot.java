@@ -25,8 +25,6 @@ public class AddPot extends AppCompatActivity {
         cancel();
         OkAndValidate(txtpotName,txtpotWeight);
 
-
-
     }
 
     public void OkAndValidate(final EditText txtpotName, final EditText txtpotWeight)

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CalculateServing extends AppCompatActivity {
+public class CalculateServing extends AppCompatActivity implements TextWatcher {
 
     private static final String EXTRA_POT_NAME = "The pot's name";
     private static final String EXTRA_POT_WEIGHT = "The pot's weight";
@@ -29,6 +31,8 @@ public class CalculateServing extends AppCompatActivity {
         //txtViewPotName.setText(potName);
         //txtViewWeightEmpty.setText(emptyPotWeight);
 
+
+
         validateAndUpdateLabels();
 
         extractDataFromIntent();
@@ -37,6 +41,21 @@ public class CalculateServing extends AppCompatActivity {
 
         Log.i("Debug", "pot name is = " + potName + "\n"
                 + "pot weight is = " + emptyPotWeight + ".");
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+
     }
 
     public static Intent makeIntent(Context context, String potName, int potWeight) {
@@ -72,7 +91,6 @@ public class CalculateServing extends AppCompatActivity {
         }
         catch (Exception e)
         {
-
             label.setText("You did not enter an integer into the text field(s)");
             return;
         }
@@ -83,16 +101,11 @@ public class CalculateServing extends AppCompatActivity {
             label.setText("Please enter a whole number into the text field(s)");
             return;
         }
-
-
         int wtOfFoodResult=wtWithFoodnum-wtEmptynum;
         int servingWtNum=wtOfFoodResult/numServingsnum;
 
         wtOfFood.setText(wtOfFoodResult);
         servingWeightLabel.setText(servingWtNum);
-
-
-
 
     }
 
@@ -106,5 +119,6 @@ public class CalculateServing extends AppCompatActivity {
             }
         });
     }
+
 
 }
