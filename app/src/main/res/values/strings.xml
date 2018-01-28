@@ -14,4 +14,5 @@
     <string name="weight_with_food_g">Weight with Food (g)</string>
     <string name="weight_empty_g">Weight Empty (g)</string>
     <string name="pot">Pot</string>
+    <string name="delete_pot">Delete Pot</string>
 </resources>

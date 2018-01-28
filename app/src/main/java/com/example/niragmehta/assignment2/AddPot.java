@@ -86,6 +86,8 @@ public class AddPot extends AppCompatActivity {
         });
     }
 
+
+
     public static Intent makeIntent(Context context) {
         return new Intent(context, AddPot.class);
     }

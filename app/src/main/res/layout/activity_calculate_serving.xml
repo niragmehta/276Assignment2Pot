@@ -150,4 +150,13 @@
         android:layout_toEndOf="@+id/txtViewTotalServing"
         android:layout_toRightOf="@+id/txtViewTotalServing" />
 
+    <Button
+        android:id="@+id/btnDeletePot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnBack"
+        android:layout_toLeftOf="@+id/txtViewServingWt"
+        android:layout_toStartOf="@+id/txtViewServingWt"
+        android:text="@string/delete_pot" />
+
 </android.widget.RelativeLayout>

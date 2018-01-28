@@ -21,10 +21,11 @@ public class CalculateServing extends AppCompatActivity implements TextWatcher {
     private int emptyPotWeight;
     private int wtOfFoodnum;
 
-    EditText wtWithFood;
-    EditText numServings;
-    TextView wtOfFood;
-    TextView servingWeightLabel;
+    private EditText wtWithFood;
+    private EditText numServings;
+    private TextView wtOfFood;
+    private TextView servingWeightLabel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class CalculateServing extends AppCompatActivity implements TextWatcher {
         numServings=findViewById(R.id.PTnumServings);
         wtOfFood=findViewById(R.id.txtViewfoodWeight);
         servingWeightLabel=findViewById(R.id.txtViewServingWt);
+        Button deleteButton=findViewById(R.id.btnDeletePot);
 
         wtWithFood.addTextChangedListener(this);
         numServings.addTextChangedListener(this);
@@ -111,11 +113,21 @@ public class CalculateServing extends AppCompatActivity implements TextWatcher {
             }
         }
         catch (Exception e){
-
         }
 
-
     }
+
+    public void deletePot(Button button)
+    {
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Use Intent to send back index to delete Pot
+
+            }
+        });
+    }
+
 
     public static Intent makeIntent(Context context, String potName, int potWeight) {
         Intent intent = new Intent(context, CalculateServing.class);
@@ -129,8 +141,6 @@ public class CalculateServing extends AppCompatActivity implements TextWatcher {
         potName = intent.getStringExtra(EXTRA_POT_NAME);
         emptyPotWeight = intent.getIntExtra(EXTRA_POT_WEIGHT, 0);
     }
-
-
 
     public void goBack()
     {
