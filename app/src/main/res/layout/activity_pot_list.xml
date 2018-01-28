@@ -8,15 +8,16 @@
 
     <Button
         android:id="@+id/btnAddPot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="20dp"
         android:layout_marginEnd="22dp"
         android:layout_marginRight="22dp"
-        android:text="@string/add_pot" />
+        android:text="@string/add_pot"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/txtSlectPotToUse"

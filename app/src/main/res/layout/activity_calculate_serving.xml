@@ -125,7 +125,8 @@
         android:layout_alignBaseline="@+id/txtViewServingWeight"
         android:layout_alignBottom="@+id/txtViewServingWeight"
         android:layout_alignLeft="@+id/PTnumServings"
-        android:layout_alignStart="@+id/PTnumServings" />
+        android:layout_alignStart="@+id/PTnumServings"
+        android:textSize="25dp" />
 
     <Button
         android:id="@+id/btnBack"

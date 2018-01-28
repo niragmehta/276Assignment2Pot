@@ -78,6 +78,7 @@ public class CalculateServing extends AppCompatActivity implements TextWatcher {
             editable.replace(0,editable.length(),"");
         if(check==0)
         {
+            //Clear both labels
             if(editable==wtWithFood.getEditableText())
                 wtOfFood.setText("");
             else if(editable==numServings.getEditableText())
