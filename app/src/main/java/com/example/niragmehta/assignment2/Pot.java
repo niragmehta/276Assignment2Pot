@@ -8,8 +8,6 @@ public class Pot {
 
     private int weight;
     private String name;
-    private int weightWithFood;
-    private int servingNumber;
 
     // Set member data based on parameters.
     public Pot(String name, int weightInG) {
@@ -17,14 +15,6 @@ public class Pot {
         this.weight=weightInG;
     }
 
-
-    public int getWeightWithFood() {
-        return weightWithFood;
-    }
-
-    public int getServingNumber() {
-        return servingNumber;
-    }
 
     // Return the weight
     public int getWeightInG() {
@@ -41,20 +31,6 @@ public class Pot {
         return name;
     }
 
-    public int weightOfFood()
-    {
-        return weightWithFood-weight;
-    }
-
-    public int servingWeight()
-    {
-        if(servingNumber==0)
-        {
-            System.out.println("Warning: Number of servings=0, hence returning 0 serving weight");
-            return 0;
-        }
-        return servingWeight()/servingNumber;
-    }
 
     // Set the name. Throws IllegalArgumentException if name is an empty string (length 0),
     // or if name is a null-reference.
@@ -62,11 +38,5 @@ public class Pot {
         this.name=name;
     }
 
-    public void setWeightWithFood(int weightWithFood) {
-        this.weightWithFood = weightWithFood;
-    }
 
-    public void setServingNumber(int servingNumber) {
-        this.servingNumber = servingNumber;
-    }
 }
