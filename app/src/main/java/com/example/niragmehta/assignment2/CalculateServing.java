@@ -66,47 +66,51 @@ public class CalculateServing extends AppCompatActivity implements TextWatcher {
             Integer.parseInt(editable.toString());
         }
         catch (Exception e){Toast.makeText(getApplicationContext(),
-                "The text you have entered in weight field is not a number",
+
+                "Text Field is empty or is a string",
                 Toast.LENGTH_SHORT).show();
-                //wtOfFood.setText("");
-                //servingWeightLabel.setText("");
                 return;
         }
 
+        int check=Integer.parseInt(editable.toString());
 
+        if(check<0)
+            editable.replace(0,editable.length(),"");
+        if(check==0)
+        {
+            if(editable==wtWithFood.getEditableText())
+                wtOfFood.setText("");
+            else if(editable==numServings.getEditableText())
+                servingWeightLabel.setText("");
+        }
 
         try {
 
             if(editable==wtWithFood.getEditableText())
             {
 
-
+                //update weight with food label
                 int temp=Integer.parseInt(wtWithFood.getText().toString());
                 temp=temp-emptyPotWeight;
-
-
                 wtOfFoodnum=temp;
                 wtOfFood.setText(""+wtOfFoodnum);
 
+                //update number of servings label too
                 temp=Integer.parseInt(numServings.getText().toString());
                 temp=wtOfFoodnum/temp;
-
-
                 servingWeightLabel.setText(""+temp);
             }
 
             else if(editable==numServings.getEditableText())
             {
                 int temp=Integer.parseInt(numServings.getText().toString());
+
                 temp=wtOfFoodnum/temp;
-                
                 servingWeightLabel.setText(""+temp);
             }
         }
         catch (Exception e){
-            Toast.makeText(getApplicationContext(),
-                "Text Field is empty",
-                Toast.LENGTH_SHORT).show();
+
         }
 
 
