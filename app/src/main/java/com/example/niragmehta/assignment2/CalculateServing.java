@@ -19,6 +19,12 @@ public class CalculateServing extends AppCompatActivity implements TextWatcher {
     private static final String EXTRA_POT_WEIGHT = "The pot's weight";
     private String potName;
     private int emptyPotWeight;
+    private int wtOfFoodnum;
+
+    EditText wtWithFood;
+    EditText numServings;
+    TextView wtOfFood;
+    TextView servingWeightLabel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +35,19 @@ public class CalculateServing extends AppCompatActivity implements TextWatcher {
         TextView txtViewWeightEmpty = findViewById(R.id.textViewWeightEmpty);
 
         extractDataFromIntent();
-        validateAndUpdateLabels();
         goBack();
 
         txtViewPotName.setText(potName);
         txtViewWeightEmpty.setText("" + emptyPotWeight);
 
-        Log.i("Debug", "pot name is = " + potName + "\n"
-                + "pot weight is = " + emptyPotWeight + ".");
+        wtWithFood=findViewById(R.id.PTWtWithFood);
+        numServings=findViewById(R.id.PTnumServings);
+        wtOfFood=findViewById(R.id.txtViewfoodWeight);
+        servingWeightLabel=findViewById(R.id.txtViewServingWt);
+
+        wtWithFood.addTextChangedListener(this);
+        numServings.addTextChangedListener(this);
+
     }
 
     @Override
@@ -51,6 +62,53 @@ public class CalculateServing extends AppCompatActivity implements TextWatcher {
 
     @Override
     public void afterTextChanged(Editable editable) {
+        try {
+            Integer.parseInt(editable.toString());
+        }
+        catch (Exception e){Toast.makeText(getApplicationContext(),
+                "The text you have entered in weight field is not a number",
+                Toast.LENGTH_SHORT).show();
+                //wtOfFood.setText("");
+                //servingWeightLabel.setText("");
+                return;
+        }
+
+
+
+        try {
+
+            if(editable==wtWithFood.getEditableText())
+            {
+
+
+                int temp=Integer.parseInt(wtWithFood.getText().toString());
+                temp=temp-emptyPotWeight;
+
+
+                wtOfFoodnum=temp;
+                wtOfFood.setText(""+wtOfFoodnum);
+
+                temp=Integer.parseInt(numServings.getText().toString());
+                temp=wtOfFoodnum/temp;
+
+
+                servingWeightLabel.setText(""+temp);
+            }
+
+            else if(editable==numServings.getEditableText())
+            {
+                int temp=Integer.parseInt(numServings.getText().toString());
+                temp=wtOfFoodnum/temp;
+                
+                servingWeightLabel.setText(""+temp);
+            }
+        }
+        catch (Exception e){
+            Toast.makeText(getApplicationContext(),
+                "Text Field is empty",
+                Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
@@ -67,42 +125,7 @@ public class CalculateServing extends AppCompatActivity implements TextWatcher {
         emptyPotWeight = intent.getIntExtra(EXTRA_POT_WEIGHT, 0);
     }
 
-    public void validateAndUpdateLabels()
-    {
-        TextView label=findViewById(R.id.ResultLabel);
 
-        EditText wtWithFood=findViewById(R.id.PTWtWithFood);
-        EditText numServings=findViewById(R.id.PTnumServings);
-        TextView wtOfFood=findViewById(R.id.txtViewfoodWeight);
-        TextView servingWeightLabel=findViewById(R.id.txtViewServingWt);
-
-        int wtEmptynum=emptyPotWeight;
-        int wtWithFoodnum;
-        int numServingsnum;
-
-        try {
-            wtWithFoodnum=Integer.parseInt(wtWithFood.getText().toString());
-            numServingsnum=Integer.parseInt(numServings.getText().toString());
-        }
-        catch (Exception e)
-        {
-            label.setText("You did not enter an integer into the text field(s)");
-            return;
-        }
-
-        if(wtWithFoodnum<0 || numServingsnum<0)
-        {
-
-            label.setText("Please enter a whole number into the text field(s)");
-            return;
-        }
-        int wtOfFoodResult=wtWithFoodnum-wtEmptynum;
-        int servingWtNum=wtOfFoodResult/numServingsnum;
-
-        wtOfFood.setText(wtOfFoodResult);
-        servingWeightLabel.setText(servingWtNum);
-
-    }
 
     public void goBack()
     {
