@@ -87,6 +87,7 @@ public class CalculateServing extends AppCompatActivity implements TextWatcher {
                 servingWeightLabel.setText("");
         }
 
+
         try {
 
             if(editable==wtWithFood.getEditableText())
@@ -95,6 +96,7 @@ public class CalculateServing extends AppCompatActivity implements TextWatcher {
                 //update weight with food label
                 int temp=Integer.parseInt(wtWithFood.getText().toString());
                 temp=temp-emptyPotWeight;
+
                 wtOfFoodnum=temp;
                 wtOfFood.setText(""+wtOfFoodnum);
 

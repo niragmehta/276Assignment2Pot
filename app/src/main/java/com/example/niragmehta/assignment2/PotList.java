@@ -57,11 +57,11 @@ public class PotList extends AppCompatActivity {
 
                     Toast.makeText(getApplicationContext(),
                              pot.getName() + " successfully added!",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(),
                             "Add pot activity canceled",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
         }
     }
