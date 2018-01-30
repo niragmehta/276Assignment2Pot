@@ -15,4 +15,5 @@
     <string name="weight_empty_g">Weight Empty (g)</string>
     <string name="pot">Pot</string>
     <string name="delete_pot">Delete Pot</string>
+    <string name="pot_name_hint">Pot Name</string>
 </resources>

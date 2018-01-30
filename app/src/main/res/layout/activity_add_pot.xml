@@ -30,7 +30,7 @@
         android:layout_alignLeft="@+id/editTextPotWeight"
         android:layout_alignStart="@+id/editTextPotWeight"
         android:ems="10"
-        android:hint="Pot Name"
+        android:hint="@string/pot_name_hint"
         android:inputType="textPersonName" />
 
     <TextView
@@ -55,7 +55,8 @@
         android:layout_toRightOf="@+id/txtPotWeight"
         android:ems="10"
         android:hint="@string/pot_weight_hint"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        tools:ignore="TextFields" />
 
     <Button
         android:id="@+id/btnCancel"
